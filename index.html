@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>LOGO</h1>
+      <h5>Sign In/Sign Up</h5>
+    </header>
+
+    <div id="authForm" class="form-container">
+      <h2>Sign In or Sign Up</h2>
+      <form>
+        <label for="username">Email</label>
+        <input type="email" id="userEmail" placeholder="Email" />
+
+        <label for="password">Password</label>
+        <input type="password" id="userPassword" placeholder="Password" />
+
+        <div class="social-login">
+          <button id="signInButton" class="google">Sign in</button>
+          <button id="signUpButton" class="facebook">Sign up</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="secretContent">
+      <div class="contentContainer">
+        <h3>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+          dignissimos deserunt quasi qui earum! Explicabo quos adipisci tenetur
+          molestiae est?
+        </h3>
+        <h1>authentication</h1>
+        <button id="signOutButton">Sign Out</button>
+      </div>
+    </div>
+
+    <footer>
+      <h1>© 2025 - All Rights Reserved</h1>
+    </footer>
+
+    <script type="module">
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+      import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBSRAvQKUE9ei3cUTV3uOf2dA5Ynr7zSJQ",
+        authDomain: "authfun-da4c9.firebaseapp.com",
+        projectId: "authfun-da4c9",
+        storageBucket: "authfun-da4c9.firebasestorage.app",
+        messagingSenderId: "230634931917",
+        appId: "1:230634931917:web:39d572828ebe3c63270b84",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      const userEmail = document.getElementById("userEmail");
+      const userPassword = document.getElementById("userPassword");
+      const authForm = document.getElementById("authForm");
+      const secretContent = document.getElementById("secretContent");
+      const signInButton = document.getElementById("signInButton");
+      const signUpButton = document.getElementById("signUpButton");
+      const signOutButton = document.getElementById("signOutButton");
+
+      secretContent.style='display:none';
+
+      const userSignUp = async () => {
+        const signUpEmail = userEmail.value;
+        const signUpPassword = userPassword.value;
+        createUserWithEmailAndPassword(auth , signUpEmail, signUpPassword)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          alert("your account has been created!");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + errorMassage)
+        })
+      }
+
+
+      signUpButton.addEventListener("click" ,userSignUp)
+
+    </script>
+  </body>
+</html>
