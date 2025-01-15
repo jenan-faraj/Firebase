@@ -1,95 +1,112 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Account</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>LOGO</h1>
-      <h5>Sign In/Sign Up</h5>
-    </header>
 
-    <div id="authForm" class="form-container">
-      <h2>Sign In or Sign Up</h2>
-      <form>
-        <label for="username">Email</label>
-        <input type="email" id="userEmail" placeholder="Email" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication is Fun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(135deg, #1e1e2f, #3b3b61);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
 
-        <label for="password">Password</label>
-        <input type="password" id="userPassword" placeholder="Password" />
+        #authForm,
+        #secretContent {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            width: 300px;
+            margin-top: 20px;
+        }
 
-        <div class="social-login">
-          <button id="signInButton" class="google">Sign in</button>
-          <button id="signUpButton" class="facebook">Sign up</button>
-        </div>
-      </form>
+        h1,
+        h3 {
+            margin-bottom: 20px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border: 2px solid #f39c12;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #f39c12;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        #secretContent {
+            display: none;
+        }
+
+        #secretContent h1 {
+            color: #e74c3c;
+        }
+
+        #secretContent button {
+            background-color: #e74c3c;
+        }
+
+        #secretContent button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="authForm">
+        <h1>Sign Up or Sign In</h1>
+        <input type="email" placeholder="email" id="userEmail">
+        <input type="password" placeholder="password" id="userPassword">
+        <br> <br>
+        <button id="signUpButton">Sign Up</button>
+        <button id="signInButton">Sign In</button>
     </div>
 
     <div id="secretContent">
-      <div class="contentContainer">
-        <h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
-          dignissimos deserunt quasi qui earum! Explicabo quos adipisci tenetur
-          molestiae est?
-        </h3>
-        <h1>authentication</h1>
+        <h3>this is top secret information that you can only see if</h3>
+        <h1>AUTHENTICATED</h1>
         <button id="signOutButton">Sign Out</button>
-      </div>
+
+        <button id="x">Home Page</button>
+
+
     </div>
 
-    <footer>
-      <h1>© 2025 - All Rights Reserved</h1>
-    </footer>
+    <script src="app.js" type="module"></script>
+</body>
 
-    <script type="module">
-
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-      import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyBSRAvQKUE9ei3cUTV3uOf2dA5Ynr7zSJQ",
-        authDomain: "authfun-da4c9.firebaseapp.com",
-        projectId: "authfun-da4c9",
-        storageBucket: "authfun-da4c9.firebasestorage.app",
-        messagingSenderId: "230634931917",
-        appId: "1:230634931917:web:39d572828ebe3c63270b84",
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-
-      const userEmail = document.getElementById("userEmail");
-      const userPassword = document.getElementById("userPassword");
-      const authForm = document.getElementById("authForm");
-      const secretContent = document.getElementById("secretContent");
-      const signInButton = document.getElementById("signInButton");
-      const signUpButton = document.getElementById("signUpButton");
-      const signOutButton = document.getElementById("signOutButton");
-
-      secretContent.style='display:none';
-
-      const userSignUp = async () => {
-        const signUpEmail = userEmail.value;
-        const signUpPassword = userPassword.value;
-        createUserWithEmailAndPassword(auth , signUpEmail, signUpPassword)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-          alert("your account has been created!");
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode + errorMassage)
-        })
-      }
-
-
-      signUpButton.addEventListener("click" ,userSignUp)
-
-    </script>
-  </body>
 </html>

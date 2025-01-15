@@ -1,111 +1,111 @@
-* {
-  margin: 0px;
-  font-weight: bold;
-  font-family: "Courier New", Courier, monospace;
-}
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  align-items: center;
-  background-color: rgba(112, 128, 144, 0.212);
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
-body {
-  background: linear-gradient(rgba(0, 0, 0, 0.094), rgba(0, 0, 0, 0.5)),
-    url("https://i.pinimg.com/236x/2b/69/37/2b69379c1d07f46f56c6a89c51cfcb46.jpg")
-      no-repeat center center/cover;
+h1, h2 {
+  color: #f5f5f5;
+  text-align: center;
+  margin-top: 50px;
 }
-.form-container {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  height: 95vh;
+
+form {
+  margin-top: 30px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-form {
-  background: rgba(255, 255, 255, 0.233);
-  border-radius: 10px;
-  padding: 50px;
-  width: 300px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-}
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  align-items: center;  /* محاذاة الحقول في الوسط */
 }
 
-form label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-form input {
-  width: 92%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-button {
+form input,
+form button {
   width: 100%;
-  padding: 10px;
-  border: none;
+  padding: 12px;
+  margin: 8px 0; /* تقليل المسافة بين المدخلات */
   border-radius: 5px;
+  border: 1px solid #555;
+  background-color: #444;
   color: #fff;
   font-size: 16px;
+  box-sizing: border-box; /* تأكد من أن padding لا يؤثر على العرض */
+}
+
+form input:focus,
+form button:focus {
+  outline: none;
+  border-color: #ff5722;
+}
+
+form button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
   cursor: pointer;
-  background-color: #4267b2;
 }
 
-button:hover {
-  background-color: #0056b3;
+form button:hover {
+  background-color: #e64a19;
 }
 
-.social-login {
+#productsContainer {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.social-login button {
-  width: 48%;
+.product-card {
+  background: #444;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.product-card h3 {
+  margin-top: 0;
+  color: #f5f5f5;
+  font-size: 18px;
+}
+
+.product-card p {
+  margin: 5px 0;
+  color: #bbb;
   font-size: 14px;
 }
 
-.google {
-  background-color: #db4437;
-  color: #fff;
-}
-
-.facebook {
-  background-color: #4267b2;
-  color: #fff;
-}
-
-.secretContent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
-.contentContainer {
-  margin: 20px;
-  max-width: 600px;
-}
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
+.product-card button {
+  background-color: #d32f2f;
   color: white;
-  background-color: rgb(55, 68, 81);
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: #c62828;
+}
+
+.product-card button:active {
+  background-color: #b71c1c;
 }
